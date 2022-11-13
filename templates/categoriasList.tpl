@@ -14,7 +14,6 @@
     </div>
 
     <button type="submit" class="btn btn-primary mt-2">Cargar</button>
-    <button type="submit" class="btn btn-warning mt-2 ms-2">Modificar</button>
 </form>
 
 <!-- lista de categorias -->
@@ -23,7 +22,7 @@
         <li class="list-group-item">
             <span>Categoría: <b>{$categoria->categoria}</b></span>
             <div class="ml-auto">
-                <a href='modificar/{$categoria->id_categoria}' type='button' class='btn btn-primary'>Modificar</a>
+                <a href='editCategoria/{$categoria->id_categoria}' type='button' class='btn btn-primary'>Modificar</a>
                 <a href='delete/{$categoria->id_categoria}' type='button' class='btn btn-danger'>Borrar</a>
             </div>
         </li>

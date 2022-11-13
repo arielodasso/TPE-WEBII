@@ -5,7 +5,7 @@
     <div class="row cont-login">
         <div class="col-md-4">
             <div class="card mt-4 form-login">
-                <div class="card-header">Login</div>
+                <div class="card-header" style="color: black;">Login</div>
                     <div class="card-body">
                         <form method="POST" action="validate">
                             <div class="form-group">

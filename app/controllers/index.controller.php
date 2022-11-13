@@ -12,9 +12,10 @@ class HomeController {
     }
 
     public function showHome() {
-        $categorias = $this->model->getAllNoticias();
-        
-        $this->view->showHome($categorias);
+        $noticias = $this->model->getAllNoticias();
+        $nombreCategoria = $this->model->getNombreCategoria();
+
+        $this->view->showHome($noticias,$nombreCategoria);
         
     }
 

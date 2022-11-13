@@ -13,12 +13,12 @@
             </div>
         </div>
         <div class="cont-noticias">
-          {foreach from=$noticias item=$noticia}
+          {foreach from=$noticias item=$noticiaByCategoria}
             <div class="noticia">
                 <div class="text-noticia card-body">
-                    <h2 class="card-title">{$noticia->titulo}</h2>
-                    <p>{$noticia->descripcion}</p>
-                    <a href="noticia/{$noticia->id}" class="btn btn-primary">Ver más</a>
+                    <h2 class="card-title">{$noticiaByCategoria->titulo}</h2>
+                    <p>{$noticiaByCategoria->descripcion}</p>
+                    <a href="noticia/{$noticiaByCategoria->id}" class="btn btn-primary">Ver más</a>
                 </div>
             </div>
           {/foreach}
@@ -26,3 +26,4 @@
 
 
 {include file="footer.tpl"}
+

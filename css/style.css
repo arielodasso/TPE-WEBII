@@ -182,7 +182,7 @@ footer{
         display: flex;
     }
     .section-notas .titulo-seccion h2{
-        font-size: 40px;
+        font-size: 30px;
         margin: 30px;
         margin-right: 0px;
         margin-left: 50px;
@@ -199,7 +199,7 @@ footer{
     .section-notas .titulo-seccion .cont-cuadraditos{
         display: flex;
         margin-left: 10px;
-        margin-top: 45px;
+        margin-top: 40px;
     }
         .section-notas .titulo-seccion .cont-cuadraditos .cuadradito-grande{
             background-color: rgb(159,14,53);
@@ -387,12 +387,7 @@ footer{
     display: flex;
     justify-content: center;
 }
-.card-header{
-    color: #000;
-    font-size: 30px;
-    font-weight: bolder;
-    text-transform: uppercase;
-}
+
 .form-desarrollo{
     background-color: rgba(70,2,24,1);
     margin: 0px 50px;
@@ -415,9 +410,7 @@ footer{
 .mt-3{
     margin-left: 50px;
 }
-.card-title{
-    color: #000;
-}
+
 .btn-entrar{
     margin-left: 150px;
 }
@@ -434,4 +427,50 @@ option{
     }
 .titulo-redaccion{
     margin-left: 50px;
+}
+
+/*Noticia completa*/
+.cont-noticias .text-info{
+    padding-left: 50px;
+}
+.cont-noticias .text-info #titulo{
+    color: #fff;
+    font-size: 45px;
+    font-weight: 600;
+}
+.cont-noticias .text-info .descripcion{
+    font-size: 20px;
+    max-width: 70%;
+    margin-top: 10px;
+}
+.cont-noticias .text-info .fecha{
+    font-style: italic;
+}
+.cont-noticias .text-info .cuerpo{
+    font-size: 25px;
+    max-width: 90%;
+    margin-top: 40px;
+}
+.form-modificar, .card-header{
+    padding-left: 50px;
+    color: #fff;
+}
+.form-modificar .form-group input{
+    max-width: 20%;
+}
+
+.form-group.form-select{
+    width: 50%;
+}
+
+
+.form-modificar .form-group .form-group input{
+    visibility: hidden;
+}
+
+.card-header{
+    color: #000;
+    font-size: 30px;
+    font-weight: bolder;
+    text-transform: uppercase;
 }

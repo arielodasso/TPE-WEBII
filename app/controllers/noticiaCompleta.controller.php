@@ -1,21 +1,20 @@
 <?php
-require_once './app/models/noticiaCompleta.model.php';
-require_once './app/views/noticiaCompleta.view.php';
+require_once './app/models/noticias.model.php';
+require_once './app/views/noticias.view.php';
 
 
-class noticiaCompletaController {
+class NoticiaCompletaController {
     private $model;
     private $view;
 
     public function __construct() {
-        $this->model = new noticiaCompletaModel();
-        $this->view = new noticiaCompletaView();
+        $this->model = new NoticiaModel();
+        $this->view = new NoticiaView();
     }
 
-
     public function showNoticiaCompleta($id){
-        $noticia = $this->model->seleccionarNoticiaById($id);
-        $this->view->showNota($noticia);
+        $noticias = $this->model->seleccionarNoticiaById($id);
+        $this->view->showNota($noticias);
     }
 
 }

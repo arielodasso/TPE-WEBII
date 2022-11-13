@@ -28,11 +28,9 @@
                 <label>Categoría:</label>
                 <select class="form-select" name="categoria" id="categoria">
                     <option selected>Seleccione categoria</option>
-                    <option value="1">Asia</option>
-                    <option value="2">Europa</option>
-                    <option value="3">América</option>
-                    <option value="4">África</option>
-                    <option value="19">Oceania</option>
+                    {foreach from=$categorias item=$categoria}
+                        <option value="{$categoria->id_categoria}">{$categoria->categoria}</option>
+                    {/foreach}
                 </select>
             </div>
         </div>

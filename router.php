@@ -4,8 +4,8 @@ require_once './app/controllers/noticias.controller.php';
 require_once './app/controllers/index.controller.php';
 require_once './app/controllers/noticiaCategoria.controller.php';
 require_once './app/controllers/auth.controller.php';
-require_once './app/controllers/categorias.php';
 require_once './app/controllers/noticiaCompleta.controller.php';
+require_once './app/controllers/comentarios.controller.php';
 
 
 
@@ -26,6 +26,9 @@ switch ($params[0]) {
     case 'home':
         $homeController = new HomeController();
         $homeController->showHome();
+        
+        $comentariosController = new ComentariosController();
+        $comentariosController->showComentarios();
         break;
 
     // Muestro el formulario de Login
@@ -48,13 +51,13 @@ switch ($params[0]) {
 
     // Muestro listado de categorias
     case 'categorias':
-        $categoriasController = new CategoriasController();
+        $categoriasController = new CategoriaController();
         $categoriasController->showListaCategorias();
         break;
 
     // Muestro Edicion de categorias
     case 'adminCategorias':
-        $categoriaController = new CategoriaController();
+        $categoriaController = new CategoriasController();
         $categoriaController->showCategorias();
         break;
     
@@ -66,15 +69,15 @@ switch ($params[0]) {
     
     // Noticia completa
     case 'noticia':
-    $id = $params[0];
-    $noticiaCompletaController = new noticiaCompletaController();
+    $id = $params[1];
+    $noticiaCompletaController = new NoticiaCompletaController();
     $noticiaCompletaController->showNoticiaCompleta($id);
     break;
 
     // Noticias por categoria
     case 'categoria':
         $id = $params[1];
-        $noticiaCategoriaController = new noticiaCategoriaController();
+        $noticiaCategoriaController = new NoticiaCategoriaController();
         $noticiaCategoriaController->filtrarNoticias($id);
         break;
 
@@ -86,14 +89,14 @@ switch ($params[0]) {
         break;
 
     case 'add':
-        $categoriaController = new CategoriaController();
+        $categoriaController = new CategoriasController();
         $categoriaController->addCategoria();
         break;
 
     // Eliminar Categoria y Noticia
     case 'delete':
         $id = $params[1];
-        $categoriaController = new CategoriaController();
+        $categoriaController = new CategoriasController();
         $categoriaController->deleteCategoria($id);
         break;
 
@@ -103,18 +106,28 @@ switch ($params[0]) {
         $noticiaController->deleteNoticia($id);
         break;
 
-    // Select Noticia
-    case 'editar':
-        $id = $params[1];
+    // Actualizar Noticia
+    case 'editNoticia':
         $noticiaController = new NoticiaController();
-        $noticiaController->updateNoticia($id);
+        $noticiaController->editNoticia($params[1]);
+        break;
+    // Actualizar Noticia
+    case 'updateNoticia':
+        $noticiaController = new NoticiaController();
+        $noticiaController->updateNoticia();
+        break;
+
+
+    // Actualizar Categoria
+    case 'editCategoria':
+        $categoriaController = new CategoriasController();
+        $categoriaController->editCategoria($params[1]);
         break;
 
     // Actualizar Categoria
-    case 'modificar':
-        $id = $params[1];
-        $categoriaController = new CategoriaController();
-        $categoriaController->updateCategoria($id);
+    case 'updateCategoria':
+        $categoriaController = new CategoriasController();
+        $categoriaController->updateCategoria();
         break;
 
 

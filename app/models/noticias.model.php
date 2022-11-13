@@ -18,10 +18,21 @@ class NoticiaModel {
 
         // Obtengo los resultados
         $noticias = $query->fetchAll(PDO::FETCH_OBJ); // devuelve un arreglo de objetos
-        
+  
         return $noticias;
     }
 
+    public function getAllCategorias() {
+
+        // Ejecuto la sentencia (2 subpasos)
+        $query = $this->db->prepare("SELECT * FROM categorias");
+        $query->execute();
+
+        // Obtengo los resultados
+        $categorias = $query->fetchAll(PDO::FETCH_OBJ); // devuelve un arreglo de objetos
+        
+        return $categorias;
+    }
 
     public function getNoticiaById() {
 
@@ -47,19 +58,19 @@ class NoticiaModel {
 
     // Selecciona categoria
 
-    public function selectNoticiaById($id) {
-        $titulo = $_POST['titulo'];
+    function selectNoticiaById($id) {
         $query = $this->db->prepare('SELECT * FROM noticias WHERE id = ?');
-        $query->execute([$id,$titulo]);
-        $categoria=$query->fetch(PDO::FETCH_LAZY);
+        $query->execute([$id]);
+        $categoria = $query->fetch(PDO::FETCH_LAZY);
+        $nombre = $categoria['nombre'];
+        return $categoria;
     }
 
     // Actualizar una noticia
 
-    public function updateNoticia($id,$titulo,$descripcion,$cuerpo,$fecha,$categoria){
-        $query = $this->db->prepare('UPDATE noticias SET titulo=?, descripcion=?, cuerpo=?, fecha=? WHERE id=?');
-        $query->execute([$id,$titulo,$descripcion,$cuerpo,$fecha,$categoria]);
-
+    function updateNoticia($titulo, $descripcion, $fecha, $cuerpo, $id) {
+        $query = $this->db->prepare("UPDATE noticias SET titulo = ?, descripcion = ?, fecha = ?, cuerpo = ? WHERE id = ?");
+        $query->execute([$titulo, $descripcion, $fecha, $cuerpo, $id]);
     }
 
 
@@ -70,4 +81,22 @@ class NoticiaModel {
         $query = $this->db->prepare('DELETE FROM noticias WHERE id = ?');
         $query->execute([$id]);
     }
+
+
+    public function filtrar($id) {
+
+        $query = $this->db->prepare("SELECT a.*,b.* FROM noticias a INNER JOIN categorias b ON a.id_categoria_fk = b.id_categoria WHERE b.id_categoria = ? ORDER BY categoria ASC");
+        $query->execute([$id]);
+        $noticias = $query->fetchAll(PDO::FETCH_OBJ);
+        return $noticias;
+    }
+
+    
+    function seleccionarNoticiaById($id) {
+        $query = $this->db->prepare('SELECT * FROM noticias WHERE id = ?');
+        $query->execute([$id]);
+        $noticias = $query->fetchAll(PDO::FETCH_OBJ);
+        return $noticias;
+    }
+
 }

@@ -1,6 +1,6 @@
 <?php
 
-class CategoriaModel {
+class CategoriasModel {
 
     private $db;
 
@@ -33,16 +33,19 @@ class CategoriaModel {
 
     // Selecciona categoria
 
-    function seleccionarCategoriaById($id) {
+    function selectCategoriaById($id) {
         $query = $this->db->prepare('SELECT * FROM categorias WHERE id_categoria = ?');
         $query->execute([$id]);
+        $categoria = $query->fetch(PDO::FETCH_LAZY);
+        $nombre = $categoria['nombre'];
+        return $categoria;
     }
 
-    public function updateCategoria($categoria,$id){
-        $query = $this->db->prepare('UPDATE categorias SET categoria=? WHERE id_categoria=?');
-        $query->execute([$categoria,$id]);
-
+    function updateCategoria($nombre, $id) {
+        $query = $this->db->prepare("UPDATE categorias SET categoria = ? WHERE id_categoria = ?");
+        $query->execute([$nombre, $id]);        
     }
+
 
     // Elimina una categoria dado su id.
  

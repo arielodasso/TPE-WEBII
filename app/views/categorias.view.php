@@ -15,7 +15,23 @@ class CategoriaView {
         // mostrar el tpl
         $this->smarty->display('categoriasList.tpl');
     }
+
+    function showListaCategorias($categorias) {
+        // asigno variables al tpl smarty
+        $this->smarty->assign('categorias', $categorias);
+
+        // mostrar el tpl
+        $this->smarty->display('categorias.tpl');
+    }
     
+    function showFormEdit($categoria) {
+        // asigno variables al tpl smarty
+        $this->smarty->assign('categoria', $categoria); 
+
+        // mostrar el tpl
+        $this->smarty->display('actualizarCategoria.tpl');
+
+    }
 
 }
 

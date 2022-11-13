@@ -12,13 +12,14 @@
             </div>
         </div>
         <div class="cont-noticias">
-          {foreach from=$noticia item=$info}
-            <div class="noticia">
+          {foreach from=$noticias item=$noticia}
                 <div class="text-info card-body">
-                    <h2 class="card-title">{$info->titulo}</h2>
-                    <p>{$info->descripcion}</p>
+                    <h2 class="card-title" id="titulo">{$noticia->titulo}</h2>
+                    <p class="descripcion">{$noticia->descripcion}</p>
+                    <p class="fecha">{$noticia->fecha}</p>
+
+                    <p class="cuerpo">{$noticia->cuerpo}</p>
                 </div>
-            </div>
           {/foreach}
     </section>
 

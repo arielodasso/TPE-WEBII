@@ -1,6 +1,6 @@
 <?php
-require_once './app/models/noticiaCategoria.model.php';
-require_once './app/views/noticiaCategoria.view.php';
+require_once './app/models/noticias.model.php';
+require_once './app/views/noticias.view.php';
 require_once './app/helpers/auth.helper.php';
 
 class NoticiaCategoriaController{
@@ -8,12 +8,12 @@ class NoticiaCategoriaController{
     private $view;
 
     public function __construct() {
-        $this->model = new NoticiaCategoriaModel();
-        $this->view = new NoticiaCategoriaView();
+        $this->model = new NoticiaModel();
+        $this->view = new NoticiaView();
     }
 
     public function filtrarNoticias($id) {
-        $noticias = $this->model->getNoticiasCategoria($id);
+        $noticias = $this->model->filtrar($id);
         $this->view->filtrarNoticiasCategoria($noticias);
     }
 

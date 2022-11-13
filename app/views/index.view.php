@@ -9,10 +9,12 @@ class HomeView {
         $this->smarty = new Smarty(); // inicializo Smarty
     }
 
-    function showHome($noticias) {
+    function showHome($noticias,$nombreCategoria) {
+        
         // asigno variables al tpl smarty
         $this->smarty->assign('count', count($noticias)); 
         $this->smarty->assign('noticias', $noticias);
+        $this->smarty->assign('nombreCategoria', $nombreCategoria);
 
         // mostrar el tpl
         $this->smarty->display('noticiasCard.tpl');

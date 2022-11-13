@@ -12,16 +12,26 @@ class HomeModel {
      * Devuelve la lista de equipos completa.
      */
     public function getAllNoticias() {
-
-        // 2. ejecuto la sentencia (2 subpasos)
+        // Ejecuto la sentencia (2 subpasos)
         $consulta = $this->db->prepare("SELECT * FROM noticias");
         $consulta->execute();
 
-        // 3. obtengo los resultados
-        $categorias = $consulta->fetchAll(PDO::FETCH_OBJ); // devuelve un arreglo de objetos
+        // Obtengo los resultados
+        $noticias = $consulta->fetchAll(PDO::FETCH_OBJ); // devuelve un arreglo de objetos
         
-        return $categorias;
+        return $noticias;
     }
 
+    public function getNombreCategoria() {
+
+        // Ejecuto la sentencia (2 subpasos)
+        $query = $this->db->prepare("SELECT categoria FROM noticias JOIN categorias ON noticias.id_categoria_fk=categorias.id_categoria");
+        $query->execute();
+
+        //  Obtengo los resultados
+        $nombreCategoria = $query->fetch(PDO::FETCH_OBJ); // devuelve un arreglo de objetos
+        
+        return $nombreCategoria;
+    }
 
 }

@@ -7,7 +7,7 @@
             <span>Noticia: <b>{$noticia->titulo}</b></span>
             <div class="ml-auto">
                 <input type="hidden" name="id" value="{$noticia->id}">
-                <a href='editar/{$noticia->id}' type='button' class='btn btn-primary'>Editar</a>
+                <a href='editNoticia/{$noticia->id}' type='button' class='btn btn-primary'>Editar</a>
                 <a href='borrar/{$noticia->id}' type='button' class='btn btn-danger'>Borrar</a>
             </div>
         </li>
