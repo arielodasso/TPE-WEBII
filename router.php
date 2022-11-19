@@ -2,9 +2,7 @@
 require_once './app/controllers/categorias.controller.php';
 require_once './app/controllers/noticias.controller.php';
 require_once './app/controllers/index.controller.php';
-require_once './app/controllers/noticiaCategoria.controller.php';
 require_once './app/controllers/auth.controller.php';
-require_once './app/controllers/noticiaCompleta.controller.php';
 require_once './app/controllers/comentarios.controller.php';
 
 
@@ -70,14 +68,14 @@ switch ($params[0]) {
     // Noticia completa
     case 'noticia':
     $id = $params[1];
-    $noticiaCompletaController = new NoticiaCompletaController();
+    $noticiaCompletaController = new NoticiaController();
     $noticiaCompletaController->showNoticiaCompleta($id);
     break;
 
     // Noticias por categoria
     case 'categoria':
         $id = $params[1];
-        $noticiaCategoriaController = new NoticiaCategoriaController();
+        $noticiaCategoriaController = new NoticiaController();
         $noticiaCategoriaController->filtrarNoticias($id);
         break;
 

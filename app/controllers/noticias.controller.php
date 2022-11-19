@@ -10,10 +10,7 @@ class NoticiaController {
     public function __construct() {
         $this->model = new NoticiaModel();
         $this->view = new NoticiaView();
-
         $authHelper = new AuthHelper();
-        $authHelper->checkLoggedIn();
-
     }
 
     public function showNoticias() {
@@ -22,9 +19,10 @@ class NoticiaController {
         $this->view->showNoticias($noticias,$categorias);
 
     }
-
     
     public function addNoticia() {
+        $authHelper->checkLoggedIn();
+
         $titulo = $_POST['titulo'];
         $descripcion = $_POST['descripcion'];
         $cuerpo = $_POST['cuerpo'];
@@ -36,24 +34,32 @@ class NoticiaController {
     }
    
     function deleteNoticia($id) {
+        $authHelper->checkLoggedIn();
+
         $this->model->deleteNoticiaById($id);
         
         header("Location: ". BASE_URL."adminNoticias");
     }
 
     public function selectNoticia($id,$titulo){
+        $authHelper->checkLoggedIn();
+
         $titulo = $_POST['titulo'];
         $this->model->selectNoticiaById($id);
     }
 
 
     function editNoticia($id){
+        $authHelper->checkLoggedIn();
+
         $noticia = $this->model->selectNoticiaById($id);
         $categorias = $this->model->getAllCategorias();
         $this->view->showFormEdit($noticia, $categorias);
     }
 
     function updateNoticia(){
+        $authHelper->checkLoggedIn();
+
         $titulo = $_POST['titulo'];
         $descripcion = $_POST['descripcion'];
         $fecha = $_POST['fecha'];
@@ -63,5 +69,15 @@ class NoticiaController {
         $this->model->updateNoticia($titulo, $descripcion, $fecha, $cuerpo, $id);
 
         header("Location: " . BASE_URL. "adminNoticias"); 
+    }
+
+    public function filtrarNoticias($id) {
+        $noticias = $this->model->filtrar($id);
+        $this->view->filtrarNoticiasCategoria($noticias);
+    }
+
+    public function showNoticiaCompleta($id){
+        $noticias = $this->model->seleccionarNoticiaById($id);
+        $this->view->showNota($noticias);
     }
 }
